@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Max & Jennifer - Nossa História</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <img src="https://via.placeholder.com/300x300?text=Capa" class="card-img-top" alt="Capa da Música">
+
+  <style>
+    body {
+      background: #fff8f5;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-bottom: 100px;
+    }
+    h1, h2 {
+      color: #8e3b46;
+      margin-top: 30px;
+    }
+    .cronometro {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .audio-container {
+      margin: 30px auto;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .audio-card {
+      display: inline-block;
+      width: 200px;
+      margin: 10px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .carousel-item img {
+        height: auto;
+        max-height: 80vh;
+        object-fit: contain;
+        width: 100%;
+    }
+    .data-tempo {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .card {
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Max & Jennifer</h1>
+  <h2>Nossa História 💖</h2>
+
+  <section class="container mt-4">
+    <div id="cronometros" class="cronometro"></div>
+    <div id="dataComHora" class="data-tempo"></div>
+  </section>
+
+<div class="container mt-5">
+  <h3>Nossas Músicas 🎵</h3>
+  <div class="row justify-content-center g-4 mt-3">
+    <!-- Card da Música -->
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card shadow-sm h-100">
+        <img src="imagens/capa-musica.jpg" class="card-img-top" alt="Capa da Música">
+        <div class="card-body text-center">
+          <h6 class="card-title mb-1"><strong>Amor que nos faz um</strong></h6>
+          <p class="card-text text-muted" style="font-size: 0.9rem;">Palavra Antiga</p>
+          <audio controls style="width: 100%;">
+            <source src="musicas/amor-que-nos-faz-um.mp3" type="audio/mpeg">
+            Seu navegador não suporta o áudio.
+          </audio>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copie e cole esse bloco acima para adicionar mais músicas -->
+  </div>
+</div>
+
+
+    <div class="audio-card">
+      <p><strong>Amor que nos faz um</strong><br>Palavra Antiga</p>
+      <audio controls>
+        <source src="musicas/amor-que-nos-faz-um.mp3" type="audio/mpeg">
+        Seu navegador não suporta o áudio.
+      </audio>
+    </div>
+  </div>
+
+  <section class="container mt-5">
+  <h3>Momentos Marcantes 📸</h3>
+  <div id="carouselFotos" class="carousel slide mt-3" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="imagens/foto 1.jpg" class="d-block w-100" alt="Foto 1">
+      </div>
+      <div class="carousel-item">
+        <img src="imagens/foto 2.jpg" class="d-block w-100" alt="Foto 2">
+      </div>
+      <div class="carousel-item">
+        <img src="imagens/foto 3.jpg" class="d-block w-100" alt="Foto 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselFotos" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselFotos" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</section>
+
+
+  <footer>
+    <p>Com amor, de Max para Jennifer 💌</p>
+  </footer>
+
+  <script>
+    const datas = {
+      "Primeiro beijo": "2013-05-12T00:00:00",
+      "Início do namoro": "2013-11-25T00:00:00",
+      "Noivado": "2019-09-25T00:00:00",
+      "Casamento": "2020-09-25T00:00:00"
+    };
+
+    function calcularDiferenca(data) {
+      const hoje = new Date();
+      const inicio = new Date(data);
+      const diff = hoje - inicio;
+      const anos = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+      const meses = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      return `${anos} anos, ${meses % 12} meses e ${dias % 30} dias`;
+    }
+
+    function atualizarDataTempo() {
+      const agora = new Date();
+      const dia = String(agora.getDate()).padStart(2, '0');
+      const mes = String(agora.getMonth() + 1).padStart(2, '0');
+      const ano = agora.getFullYear();
+      const hora = String(agora.getHours()).padStart(2, '0');
+      const minuto = String(agora.getMinutes()).padStart(2, '0');
+      const segundo = String(agora.getSeconds()).padStart(2, '0');
+      const dataFormatada = `${dia}:${mes}:${ano} ${hora}:${minuto}:${segundo}`;
+      document.getElementById('dataComHora').textContent = dataFormatada;
+    }
+
+    const container = document.getElementById("cronometros");
+    for (const [evento, data] of Object.entries(datas)) {
+      const p = document.createElement("p");
+      const dataObj = new Date(data);
+      const dataFormatada = `${String(dataObj.getDate()).padStart(2, '0')}:${String(dataObj.getMonth()+1).padStart(2, '0')}:${dataObj.getFullYear()}`;
+      p.innerHTML = `⏳ <strong>${evento}</strong> (${dataFormatada}):<br> ${calcularDiferenca(data)}`;
+      container.appendChild(p);
+    }
+
+    setInterval(atualizarDataTempo, 1000);
+    atualizarDataTempo();
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
