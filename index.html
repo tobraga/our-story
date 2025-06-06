@@ -2,149 +2,155 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Max & Jennifer - Nossa História</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <img src="https://via.placeholder.com/300x300?text=Capa" class="card-img-top" alt="Capa da Música">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-
   <style>
     body {
       background: #fff8f5;
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      padding-bottom: 100px;
     }
-    h1, h2 {
+    h1, h2, h3 {
       color: #8e3b46;
       margin-top: 30px;
     }
-    .cronometro {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
+    .card-cronometro {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: all 0.3s ease-in-out;
     }
-    .audio-container {
-      margin: 30px auto;
-      overflow-x: auto;
-      white-space: nowrap;
+    .card-cronometro:hover {
+      transform: scale(1.02);
     }
-    
-    .audio-card {
-      display: inline-block;
-      width: 200px;
-      margin: 10px;
+    .music-card {
+      background-color: #fdfdfd;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       padding: 15px;
-      background-color: #fff;
+      text-align: left;
+    }
+    .music-card img {
+      width: 100%;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-    
-    .carousel-item img {
-        height: auto;
-        max-height: 80vh;
-        object-fit: contain;
-        width: 100%;
+    .music-info {
+      padding-top: 10px;
     }
-    
-    .data-tempo {
-      font-size: 1.1rem;
-      font-weight: 500;
+    .music-title {
+      font-weight: bold;
+      font-size: 1rem;
     }
-    
-    .card {
-        border-radius: 16px;
-        overflow: hidden;
+    .music-artist {
+      color: #666;
+      font-size: 0.9rem;
     }
-
-    .card-img-top {
-        height: 250px;
-        object-fit: cover;
-      }
-    
-    .fade-in {
-       opacity: 0;
-      animation: fadeIn 1s forwards;
+    audio {
+      width: 100%;
+      margin-top: 8px;
     }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-  .card-evento {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    padding: 20px;
-    transition: transform 0.3s ease;
-    height: 100%;
-  }
-
-.card-evento:hover {
-  transform: translateY(-5px);
-}
-
   </style>
-
 </head>
-
-
 <body>
+
   <h1>Max & Jennifer</h1>
   <h2>Nossa História 💖</h2>
 
+  <!-- Cronômetros -->
   <section class="container mt-4">
-    <div id="cronometros" class="row justify-content-center gy-4"></div>
-    <div id="dataComHora" class="data-tempo"></div>
+    <div class="row" id="cronometros"></div>
   </section>
 
-<div class="container mt-5">
-  <h3>Nossas Músicas 🎵</h3>
-  <div class="row justify-content-center g-4 mt-3">
-    <!-- Card da Música -->
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="card shadow-sm h-100">
-        <img src="imagens/capa-musica.jpg" class="card-img-top" alt="Capa da Música">
-        <div class="card-body text-center">
-          <h6 class="card-title mb-1"><strong>Amor que nos faz um</strong></h6>
-          <p class="card-text text-muted" style="font-size: 0.9rem;">Palavra Antiga</p>
-          <audio controls style="width: 100%;">
-            <source src="musicas/amor-que-nos-faz-um.mp3" type="audio/mpeg">
-            Seu navegador não suporta o áudio.
-          </audio>
+  <!-- Músicas -->
+  <section class="container mt-5">
+    <h3><i class="bi bi-music-note-beamed"></i> Nossas Músicas</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+
+      <div class="col">
+        <div class="music-card">
+          <img src="imagens/capa1.jpg" alt="Amor que nos faz um">
+          <div class="music-info">
+            <div class="music-title">Amor que nos faz um</div>
+            <div class="music-artist">Palavra Antiga</div>
+            <audio controls>
+              <source src="musicas/amor-que-nos-faz-um.mp3" type="audio/mpeg">
+            </audio>
+          </div>
         </div>
       </div>
+
+      <div class="col">
+        <div class="music-card">
+          <img src="imagens/capa2.jpg" alt="Die With a Smile">
+          <div class="music-info">
+            <div class="music-title">Die With A Smile</div>
+            <div class="music-artist">Lady Gaga ft. Bruno Mars</div>
+            <audio controls>
+              <source src="musicas/die-with-a-smile.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="music-card">
+          <img src="imagens/capa3.jpg" alt="Ela Une Todas as Coisas">
+          <div class="music-info">
+            <div class="music-title">Ela Une Todas as Coisas</div>
+            <div class="music-artist">Jorge Vercilo</div>
+            <audio controls>
+              <source src="musicas/ela-une.mp3" type="audio/mpeg">
+            </audio>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <!-- Copie e cole esse bloco acima para adicionar mais músicas -->
-  </div>
-</div>
-
-
-    <div class="audio-card">
-      <p><strong>Amor que nos faz um</strong><br>Palavra Antiga</p>
-      <audio controls>
-        <source src="musicas/amor-que-nos-faz-um.mp3" type="audio/mpeg">
-        Seu navegador não suporta o áudio.
-      </audio>
-    </div>
-  </div>
+  </section>
 
   <section class="container mt-5">
-  <h3>Momentos Marcantes 📸</h3>
-  <div id="carouselFotos" class="carousel slide mt-3" data-bs-ride="carousel">
+  <h3><i class="bi bi-camera"></i> Momentos Marcantes 📸</h3>
+  <div id="carouselFotos" class="carousel slide mt-4" data-bs-ride="carousel">
     <div class="carousel-inner">
+
       <div class="carousel-item active">
-        <img src="imagens/foto 1.jpg" class="d-block w-100" alt="Foto 1">
+        <div class="polaroid mx-auto">
+          <img src="imagens/foto 1.jpg" alt="Primeiro Beijo" class="img-fluid polaroid-img">
+          <div class="caption">Primeiro Beijo - 12/05/2013</div>
+        </div>
       </div>
+
       <div class="carousel-item">
-        <img src="imagens/foto 2.jpg" class="d-block w-100" alt="Foto 2">
+        <div class="polaroid mx-auto">
+          <img src="imagens/foto 2.jpg" alt="Noivado" class="img-fluid polaroid-img">
+          <div class="caption">Noivado - 25/09/2019</div>
+        </div>
       </div>
+
       <div class="carousel-item">
-        <img src="imagens/foto 3.jpg" class="d-block w-100" alt="Foto 3">
+        <div class="polaroid mx-auto">
+          <img src="imagens/foto 3.jpg" alt="Casamento" class="img-fluid polaroid-img">
+          <div class="caption">Casamento - 25/09/2020</div>
+        </div>
       </div>
+
+      <div class="carousel-item">
+        <div class="polaroid mx-auto">
+          <img src="imagens/foto 4.jpg" alt="Casamento" class="img-fluid polaroid-img">
+          <div class="caption">Casamento - 25/09/2020</div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="polaroid mx-auto">
+          <img src="imagens/foto 5.jpg" alt="Casamento" class="img-fluid polaroid-img">
+          <div class="caption">Casamento - 25/09/2020</div>
+        </div>
+      </div>
+
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselFotos" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
@@ -155,73 +161,88 @@
   </div>
 </section>
 
+<style>
+  .polaroid {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 90%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
 
-  <footer>
+  .polaroid-img {
+    object-fit: contain;
+    max-height: 400px;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .caption {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #444;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .polaroid-img {
+      max-height: 250px;
+    }
+    .caption {
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
+
+  <footer class="mt-5 text-muted">
     <p>Com amor, de Max para Jennifer 💌</p>
   </footer>
 
+  <!-- Script Cronômetros -->
   <script>
-  const datas = {
-    "Primeiro beijo": {
-      data: "2013-05-12T00:00:00",
-      icone: "bi-heart"
-    },
-    "Início do namoro": {
-      data: "2013-11-25T00:00:00",
-      icone: "bi-chat-heart"
-    },
-    "Noivado": {
-      data: "2019-09-25T00:00:00",
-      icone: "bi-ring"
-    },
-    "Casamento": {
-      data: "2020-09-25T00:00:00",
-      icone: "bi-gem"
+    const datas = {
+      "Primeiro Beijo": "2013-05-12T00:00:00",
+      "Início do Namoro": "2013-11-25T00:00:00",
+      "Noivado": "2019-09-25T00:00:00",
+      "Casamento": "2020-09-25T00:00:00"
+    };
+
+    function atualizarCronometros() {
+      const container = document.getElementById("cronometros");
+      container.innerHTML = "";
+
+      Object.entries(datas).forEach(([evento, data]) => {
+        const inicio = new Date(data);
+        const agora = new Date();
+        let diff = agora - inicio;
+
+        const segundos = Math.floor(diff / 1000) % 60;
+        const minutos = Math.floor(diff / (1000 * 60)) % 60;
+        const horas = Math.floor(diff / (1000 * 60 * 60)) % 24;
+        const diasTotais = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const anos = Math.floor(diasTotais / 365.25);
+        const meses = Math.floor((diasTotais % 365.25) / 30.44);
+        const dias = Math.floor((diasTotais % 365.25) % 30.44);
+
+        const col = document.createElement("div");
+        col.className = "col-12 col-md-6 col-lg-3 mb-3";
+
+        col.innerHTML = `
+          <div class="card-cronometro h-100">
+            <h5><i class="bi bi-heart-fill text-danger"></i> ${evento}</h5>
+            <p><strong>${inicio.toLocaleDateString()}</strong></p>
+            <p>${anos} anos, ${meses} meses, ${dias} dias</p>
+            <p>${horas}h ${minutos}m ${segundos}s</p>
+          </div>
+        `;
+        container.appendChild(col);
+      });
     }
-  };
 
-  const container = document.getElementById("cronometros");
-
-  function atualizarCronometros() {
-    container.innerHTML = '';
-
-    for (const [evento, { data, icone }] of Object.entries(datas)) {
-      const dataEvento = new Date(data);
-      const agora = new Date();
-      let diff = agora - dataEvento;
-
-      const segundosTotais = Math.floor(diff / 1000);
-      const anos = Math.floor(segundosTotais / (365.25 * 24 * 60 * 60));
-      const meses = Math.floor((segundosTotais % (365.25 * 24 * 60 * 60)) / (30.44 * 24 * 60 * 60));
-      const dias = Math.floor((segundosTotais % (30.44 * 24 * 60 * 60)) / (24 * 60 * 60));
-      const horas = Math.floor((segundosTotais % (24 * 60 * 60)) / 3600);
-      const minutos = Math.floor((segundosTotais % 3600) / 60);
-      const segundos = segundosTotais % 60;
-
-      const dataFormatada = dataEvento.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
-
-      const div = document.createElement("div");
-      div.className = "fade-in col-sm-12 col-md-6 col-lg-4";
-
-      div.innerHTML = `
-        <div class="card-evento h-100 text-center">
-          <h5 class="mb-2"><i class="bi ${icone} me-2 text-danger"></i>${evento}</h5>
-          <p class="text-muted mb-1">${dataFormatada}</p>
-          <p><strong>${anos}</strong> anos, <strong>${meses}</strong> meses, <strong>${dias}</strong> dias<br>
-          <strong>${horas}</strong>h <strong>${minutos}</strong>min <strong>${segundos}</strong>s</p>
-        </div>
-      `;
-
-
-      container.appendChild(div);
-    }
-  }
-
-  atualizarCronometros();
-  setInterval(atualizarCronometros, 1000);
-</script>
-
-
+    setInterval(atualizarCronometros, 1000);
+    atualizarCronometros();
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
