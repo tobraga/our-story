@@ -6,6 +6,8 @@
   <title>Max & Jennifer - Nossa História</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <img src="https://via.placeholder.com/300x300?text=Capa" class="card-img-top" alt="Capa da Música">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 
   <style>
     body {
@@ -27,6 +29,7 @@
       overflow-x: auto;
       white-space: nowrap;
     }
+    
     .audio-card {
       display: inline-block;
       width: 200px;
@@ -36,25 +39,40 @@
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
+    
     .carousel-item img {
         height: auto;
         max-height: 80vh;
         object-fit: contain;
         width: 100%;
     }
+    
     .data-tempo {
       font-size: 1.1rem;
       font-weight: 500;
     }
+    
     .card {
         border-radius: 16px;
         overflow: hidden;
     }
 
     .card-img-top {
-      height: 250px;
-      object-fit: cover;
+        height: 250px;
+        object-fit: cover;
+      }
+    
+    .fade-in {
+       opacity: 0;
+      animation: fadeIn 1s forwards;
     }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
 
   </style>
 </head>
@@ -129,19 +147,31 @@
 
   <script>
   const datas = {
-    "Primeiro beijo": "2013-05-12T00:00:00",
-    "Início do namoro": "2013-11-25T00:00:00",
-    "Noivado": "2019-09-25T00:00:00",
-    "Casamento": "2020-09-25T00:00:00"
+    "Primeiro beijo": {
+      data: "2013-05-12T00:00:00",
+      icone: "bi-heart"
+    },
+    "Início do namoro": {
+      data: "2013-11-25T00:00:00",
+      icone: "bi-chat-heart"
+    },
+    "Noivado": {
+      data: "2019-09-25T00:00:00",
+      icone: "bi-ring"
+    },
+    "Casamento": {
+      data: "2020-09-25T00:00:00",
+      icone: "bi-gem"
+    }
   };
 
   const container = document.getElementById("cronometros");
 
   function atualizarCronometros() {
-    container.innerHTML = ''; // limpa antes de atualizar
+    container.innerHTML = '';
 
-    for (const [evento, dataString] of Object.entries(datas)) {
-      const dataEvento = new Date(dataString);
+    for (const [evento, { data, icone }] of Object.entries(datas)) {
+      const dataEvento = new Date(data);
       const agora = new Date();
       let diff = agora - dataEvento;
 
@@ -155,19 +185,22 @@
 
       const dataFormatada = dataEvento.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
 
-      const p = document.createElement("p");
-      p.innerHTML = `
-        ⏳ <strong>${evento}</strong> (${dataFormatada}):<br>
-        ${anos} anos, ${meses} meses, ${dias} dias, ${horas}h ${minutos}min ${segundos}s
+      const div = document.createElement("div");
+      div.className = "fade-in mb-3";
+
+      div.innerHTML = `
+        <h5><i class="bi ${icone} me-2 text-danger"></i><strong>${evento}</strong> (${dataFormatada})</h5>
+        <p>${anos} anos, ${meses} meses, ${dias} dias, ${horas}h ${minutos}min ${segundos}s</p>
       `;
-      container.appendChild(p);
+
+      container.appendChild(div);
     }
   }
 
-  // atualiza a cada segundo
   atualizarCronometros();
   setInterval(atualizarCronometros, 1000);
 </script>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
