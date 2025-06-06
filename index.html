@@ -128,47 +128,47 @@
   </footer>
 
   <script>
-    const datas = {
-      "Primeiro beijo": "2013-05-12T00:00:00",
-      "Início do namoro": "2013-11-25T00:00:00",
-      "Noivado": "2019-09-25T00:00:00",
-      "Casamento": "2020-09-25T00:00:00"
-    };
+  const datas = {
+    "Primeiro beijo": "2013-05-12T00:00:00",
+    "Início do namoro": "2013-11-25T00:00:00",
+    "Noivado": "2019-09-25T00:00:00",
+    "Casamento": "2020-09-25T00:00:00"
+  };
 
-    function calcularDiferenca(data) {
-      const hoje = new Date();
-      const inicio = new Date(data);
-      const diff = hoje - inicio;
-      const anos = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-      const meses = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
-      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-      return `${anos} anos, ${meses % 12} meses e ${dias % 30} dias`;
-    }
+  const container = document.getElementById("cronometros");
 
-    function atualizarDataTempo() {
+  function atualizarCronometros() {
+    container.innerHTML = ''; // limpa antes de atualizar
+
+    for (const [evento, dataString] of Object.entries(datas)) {
+      const dataEvento = new Date(dataString);
       const agora = new Date();
-      const dia = String(agora.getDate()).padStart(2, '0');
-      const mes = String(agora.getMonth() + 1).padStart(2, '0');
-      const ano = agora.getFullYear();
-      const hora = String(agora.getHours()).padStart(2, '0');
-      const minuto = String(agora.getMinutes()).padStart(2, '0');
-      const segundo = String(agora.getSeconds()).padStart(2, '0');
-      const dataFormatada = `${dia}:${mes}:${ano} ${hora}:${minuto}:${segundo}`;
-      document.getElementById('dataComHora').textContent = dataFormatada;
-    }
+      let diff = agora - dataEvento;
 
-    const container = document.getElementById("cronometros");
-    for (const [evento, data] of Object.entries(datas)) {
+      const segundosTotais = Math.floor(diff / 1000);
+      const anos = Math.floor(segundosTotais / (365.25 * 24 * 60 * 60));
+      const meses = Math.floor((segundosTotais % (365.25 * 24 * 60 * 60)) / (30.44 * 24 * 60 * 60));
+      const dias = Math.floor((segundosTotais % (30.44 * 24 * 60 * 60)) / (24 * 60 * 60));
+      const horas = Math.floor((segundosTotais % (24 * 60 * 60)) / 3600);
+      const minutos = Math.floor((segundosTotais % 3600) / 60);
+      const segundos = segundosTotais % 60;
+
+      const dataFormatada = dataEvento.toLocaleDateString('pt-BR', { timeZone: 'UTC' });
+
       const p = document.createElement("p");
-      const dataObj = new Date(data);
-      const dataFormatada = `${String(dataObj.getDate()).padStart(2, '0')}:${String(dataObj.getMonth()+1).padStart(2, '0')}:${dataObj.getFullYear()}`;
-      p.innerHTML = `⏳ <strong>${evento}</strong> (${dataFormatada}):<br> ${calcularDiferenca(data)}`;
+      p.innerHTML = `
+        ⏳ <strong>${evento}</strong> (${dataFormatada}):<br>
+        ${anos} anos, ${meses} meses, ${dias} dias, ${horas}h ${minutos}min ${segundos}s
+      `;
       container.appendChild(p);
     }
+  }
 
-    setInterval(atualizarDataTempo, 1000);
-    atualizarDataTempo();
-  </script>
+  // atualiza a cada segundo
+  atualizarCronometros();
+  setInterval(atualizarCronometros, 1000);
+</script>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
